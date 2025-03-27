@@ -21,7 +21,6 @@
     (Flask application is deployed, connected to the database. On each server:
     Git, Python 3, and MySQL development libraries are installed.
     The ecommerce-flask-stripe repository is cloned, dependencies are installed.
-    A reguser user with sudo rights is created.
 
     Scripts:
 
