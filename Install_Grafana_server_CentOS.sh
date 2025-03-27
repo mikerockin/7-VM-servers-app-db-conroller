@@ -7,6 +7,7 @@
 GRAFANA_VERSION="11.6.4"
 PROMETHEUS_URL="http://192.168.56.15:9090"
 
+sudo dnf install wget -y
 wget -q -O gpg.key https://rpm.grafana.com/gpg.key
 sudo rpm --import gpg.key
 
@@ -22,7 +23,7 @@ sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 EOF
 
-sudo yum install -y https://dl.grafana.com/enterprise/release/grafana-enterprise-11.6.0-1.x86_64.rpm
+sudo yum install -y https://dl.grafana.com/oss/release/grafana-11.6.0-1.x86_64.rpm
 echo "export PATH=/usr/share/grafana/bin:$PATH" >> /etc/profile
 
 cat <<EOF> /etc/grafana/provisioning/datasources/prometheus.yaml
