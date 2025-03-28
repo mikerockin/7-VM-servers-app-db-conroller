@@ -1,6 +1,6 @@
 #!/bin/bash
 #--------------------------------------------------------------------
-# Script to Install Prometheus Mysqld_Exporter on CentOS Stream  9
+# Script to Install Prometheus ALert Manager on CentOS Stream  9
 # Tested on  CentOS Stream Vagrant 9
 #--------------------------------------------------------------------
 # https://github.com/prometheus/alertmanager/releases
@@ -10,16 +10,18 @@ ALERT_MANAGER_VERSION="0.28.1"
 cd /tmp
 curl -L https://github.com/prometheus/alertmanager/releases/download/v$ALERT_MANAGER_VERSION/alertmanager-$ALERT_MANAGER_VERSION.linux-amd64.tar.gz -O
 tar xvfz alertmanager-$ALERT_MANAGER_VERSION.linux-amd64.tar.gz
-cd alertmanager-$MYSQLD_EXPORTER_VERSION.linux-amd64
+cd alertmanager-$ALERT_MANAGER_VERSION.linux-amd64
 
 mv alertmanager /usr/bin/
 chcon -t bin_t /usr/bin/alertmanager
 rm -rf /tmp/alertmanager*
+mkdir -p /etc/alertmanager
+mkdir -p /etc/alertmanager/data
 
 useradd -rs /bin/false alertmanager
 chown alertmanager:alertmanager /usr/bin/alertmanager
 
-cat <<EOF> /etc/alertmanager/alertmanager.yml
+cat <<EOF>> /etc/alertmanager/alertmanager.yml
 global:
 
 route:
@@ -32,7 +34,7 @@ route:
 receivers:
   - name: 'slack-notifications'
     slack_configs:
-      - api_url: 'https://hooks.slack.com/services/T08KF6DNH7V/B08KGEH0LSW/********'
+      - api_url: 'https://hooks.slack.com/services/T08KF6DNH7V/B08KGEH0LSW/*************'
         channel: '#noub'
         send_resolved: true
         title: '{{ .CommonAnnotations.summary }}'
@@ -49,7 +51,7 @@ User=alertmanager
 Group=alertmanager
 Type=simple
 Restart=on-failure
-ExecStart=/usr/local/bin/alertmanager --config.file=/etc/alertmanager/alertmanager.yml --storage.path=/var/lib/alertmanager
+ExecStart=/usr/bin/alertmanager --config.file=/etc/alertmanager/alertmanager.yml --storage.path=/etc/alertmanager/data
 
 [Install]
 WantedBy=multi-user.target
