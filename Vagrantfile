@@ -149,7 +149,7 @@ END_MYSQLD
       sudo dnf -y install gcc python3-devel mysql-community-devel
       sudo  dnf  -y  install  git
       cd /home/vagrant/
-      git  clone  https://github.com/rotoro-cloud/ecommerce-flask-stripe.git
+      git  clone  https://github.com/app-generator/ecommerce-flask-stripe
       sudo  mv  ecommerce-flask-stripe/  /opt/ecommerce-flask-stripe/
       sudo  chown  -R  reguser:reguser  /opt/ecommerce-flask-stripe/
       sudo -u reguser bash -c '
@@ -184,7 +184,7 @@ END_MYSQLD
       sudo dnf -y install gcc python3-devel mysql-community-devel
       sudo  dnf  -y  install  git
       cd /home/vagrant/
-      git  clone  https://github.com/rotoro-cloud/ecommerce-flask-stripe.git
+      git  clone  https://github.com/app-generator/ecommerce-flask-stripe
       sudo  mv  ecommerce-flask-stripe/  /opt/ecommerce-flask-stripe/
       sudo  chown  -R  reguser:reguser  /opt/ecommerce-flask-stripe/
       sudo -u reguser bash -c '
@@ -219,7 +219,7 @@ END_MYSQLD
       sudo dnf -y install gcc python3-devel mysql-community-devel
       sudo  dnf  -y  install  git
       cd /home/vagrant/
-      git  clone  https://github.com/rotoro-cloud/ecommerce-flask-stripe.git
+      git  clone  https://github.com/app-generator/ecommerce-flask-stripe
       sudo  mv  ecommerce-flask-stripe/  /opt/ecommerce-flask-stripe/
       sudo  chown  -R  reguser:reguser  /opt/ecommerce-flask-stripe/
       sudo -u reguser bash -c '
